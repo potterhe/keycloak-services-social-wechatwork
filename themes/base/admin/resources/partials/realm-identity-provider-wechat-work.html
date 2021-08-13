@@ -39,9 +39,7 @@
                 </div>
                 <kc-tooltip>{{:: 'social.client-secret.tooltip' | translate}}</kc-tooltip>
             </div>
-			
             <div data-ng-include data-src="resourceUrl + '/partials/realm-identity-provider-' + identityProvider.providerId + '-ext.html'"></div>
-			
             <div class="form-group clearfix">
                 <label class="col-md-2 control-label" for="defaultScope">{{:: 'default-scopes' | translate}} </label>
                 <div class="col-md-6">
@@ -69,6 +67,13 @@
                     <input ng-model="identityProvider.enabled" id="enabled" onoffswitch on-text="{{:: 'onText' | translate}}" off-text="{{:: 'offText' | translate}}" />
                 </div>
                 <kc-tooltip>{{:: 'identity-provider.enabled.tooltip' | translate}}</kc-tooltip>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="acceptsPromptNoneForwardFromClient">{{:: 'accepts-prompt-none-forward-from-client' | translate}}</label>
+                <div class="col-md-6">
+                    <input ng-model="identityProvider.config.acceptsPromptNoneForwardFromClient" id="acceptsPromptNoneForwardFromClient" onoffswitchvalue on-text="{{:: 'onText' | translate}}" off-text="{{:: 'offText' | translate}}" />
+                </div>
+                <kc-tooltip>{{:: 'accepts-prompt-none-forward-from-client.tooltip' | translate}}</kc-tooltip>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="disableUserInfo">{{:: 'disableUserInfo' | translate}}</label>
@@ -129,6 +134,21 @@
                     </div>
                 </div>
                 <kc-tooltip>{{:: 'post-broker-login-flow.tooltip' | translate}}</kc-tooltip>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="syncMode">{{:: 'sync-mode' | translate}}</label>
+                <div class="col-md-6">
+                    <div>
+                        <select class="form-control" id="syncMode"
+                                ng-model="identityProvider.config.syncMode"
+                                required>
+                            <option id="syncMode_import" name="syncMode" value="IMPORT">{{:: 'sync-mode.import' | translate}}</option>
+                            <option id="syncMode_legacy" name="syncMode" value="LEGACY">{{:: 'sync-mode.legacy' | translate}}</option>
+                            <option id="syncMode_force" name="syncMode" value="FORCE">{{:: 'sync-mode.force' | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <kc-tooltip>{{:: 'sync-mode.tooltip' | translate}}</kc-tooltip>
             </div>
         </fieldset>
 
